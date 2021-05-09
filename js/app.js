@@ -55,10 +55,18 @@ const editFriend = (id) => {
   ].map((item) => document.getElementById(item));
 
   toggleEditForm();
+
+  const data = {
+    name,
+    phone,
+    email,
+  };
+
   title.innerHTML = friend.name;
-  name.value = friend.name;
-  phone.value = friend.phone;
-  email.value = friend.email;
+
+  for (const [name, element] of Object.entries(data)) {
+    element.value = friend[name];
+  }
 }
 
 document.editForm.addEventListener('submit', (e) => {
